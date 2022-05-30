@@ -8,7 +8,7 @@ const name = 'Book';
 const selectableProps = [
     'id',
     'student_id',
-    'book_name',
+    'book_name AS name',
     'author',
     'issue_date',
     'return_date',
@@ -26,11 +26,10 @@ module.exports = knex => {
 
     const create = props => guts.create(props);
 
-    const getAllBooks = guts.joinFindAll('students', [
+    const getAllBooks = () => guts.joinFindAll('students', [
         'students.first_name',
         'students.last_name',
-        selectableProps.map(p => tableName + '.' + p).join(', ')
-    ]);
+    ].concat(selectableProps.map(p => tableName + '.' + p)));
 
     const findBookById = id => guts.findById(id);
 

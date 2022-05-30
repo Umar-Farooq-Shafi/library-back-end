@@ -33,8 +33,8 @@ module.exports = ({
         .timeout(timeout);
 
     const joinFindAll = (table, selectable) /* 'students' */ => knex(tableName) // 'books'
-        .join(table, table + '.id', '=', tableName + '.' + table.slice(0, -1) + '_id')
-        .select(selectable.join(', '));
+        .join(table, table + ".id", "=", tableName + "." + table.slice(0, -1) + "_id")
+        .select(selectable);
 
     // Same as `find` but only returns the first match if > 1 are found.
     const findOne = filters => find(filters)

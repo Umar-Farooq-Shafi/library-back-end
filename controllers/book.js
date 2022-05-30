@@ -15,11 +15,14 @@ const postBook = (req, res, next) => {
 };
 
 const getBooks = (req, res, next) => {
-    Book.findAll()
+    Book.getAllBooks()
         .then(books => res.json({
             ok: true,
             message: 'Books found',
-            books,
+            books: books.map((book) => ({
+                ...book,
+                borrow_by: book.first_name + " " + book.last_name,
+            }))
         }))
         .catch(next);
 };

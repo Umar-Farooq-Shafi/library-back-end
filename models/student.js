@@ -7,7 +7,7 @@ const name = "Student";
 // (e.g., `first_name`)
 const selectableProps = [
     'id',
-    'first_name',
+    'first_name AS name',
     'last_name',
     'updated_at',
     'created_at'
@@ -26,7 +26,6 @@ module.exports = knex => {
     const getAllStudents = guts.findAll();
 
     const findStudentById = id => {
-        console.log('finding...');
         return guts.findById(id);
     }
 
