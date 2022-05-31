@@ -25,9 +25,7 @@ module.exports = knex => {
 
     const getAllStudents = guts.findAll();
 
-    const findStudentById = id => {
-        return guts.findById(id);
-    }
+    const findStudentById = id => guts.findById(id);
 
     const update = (id, props) => guts.update(id, props);
 

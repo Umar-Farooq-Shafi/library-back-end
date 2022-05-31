@@ -28,7 +28,7 @@ const getBooks = (req, res, next) => {
 };
 
 const getBook = (req, res, next) => {
-    const props = req.params.id;
+    const props = parseInt(req.params.id);
 
     Book.findById(props)
         .then(book => res.json({
@@ -41,7 +41,7 @@ const getBook = (req, res, next) => {
 
 const updateBook = (req, res, next) => {
     const props = req.body;
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     Book.update(id, props)
         .then(book => res.json({
@@ -53,7 +53,7 @@ const updateBook = (req, res, next) => {
 };
 
 const destroy = (req, res, next) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     Book.destroy(id)
         .then(book => res.json({

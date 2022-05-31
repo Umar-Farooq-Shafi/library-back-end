@@ -25,7 +25,7 @@ const getStudents = (req, res, next) => {
 };
 
 const getStudent = (req, res, next) => {
-    const props = req.params.id;
+    const props = parseInt(req.params.id);
 
     Student.findById(props)
         .then(student => res.json({
@@ -38,7 +38,7 @@ const getStudent = (req, res, next) => {
 
 const updateById = (req, res, next) => {
     const props = req.body;
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     Student.update(id, props)
         .then(student => res.json({
@@ -50,7 +50,7 @@ const updateById = (req, res, next) => {
 };
 
 const deleteById = (req, res, next) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
 
     Student.destroy(id)
         .then(student => res.json({
